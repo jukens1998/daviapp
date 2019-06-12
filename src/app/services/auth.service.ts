@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth  } from "@angular/fire/auth";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private AFauth: AngularFireAuth) { }
+  constructor(private AFauth: AngularFireAuth, private router:Router) { }
 
   Login(email:string, password:string){
 
@@ -17,5 +18,10 @@ export class AuthService {
     });
 
 
+  }
+  logout(){
+    this.AFauth.auth.signOut().then(auth =>{
+      this.router.navigate(["/login"]);
+    })
   }
 }
