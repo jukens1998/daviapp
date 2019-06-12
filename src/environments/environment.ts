@@ -4,16 +4,17 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyBcfXOAh7hA4rLw5vlP2hZTeUVvtJRPlto",
-    authDomain: "davipractica-63421.firebaseapp.com",
-    databaseURL: "https://davipractica-63421.firebaseio.com",
-    projectId: "davipractica-63421",
-    storageBucket: "davipractica-63421.appspot.com",
-    messagingSenderId: "387978487519",
-    appId: "1:387978487519:web:d71ceab5693e0918"
+  firebaseConfig: {
+    apiKey: "AIzaSyDrpb9bI3cseBJZAFhyNDgFDJ1ZMfqYSPo",
+    authDomain: "daviapp-3c32e.firebaseapp.com",
+    databaseURL: "https://daviapp-3c32e.firebaseio.com",
+    projectId: "daviapp-3c32e",
+    storageBucket: "daviapp-3c32e.appspot.com",
+    messagingSenderId: "410411896422",
+    appId: "1:410411896422:web:a9bcf5e4b9ba582a"
   }
 };
+
 
 
 /*

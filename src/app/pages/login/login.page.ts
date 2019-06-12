@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
 
   onSubitLogin(){
     this.authService.Login(this.email,this.password).then(res=> {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/eventos']);
     }).catch(err => alert("los datos son incorrectos o no existe verifica los datos"))
   }
 
