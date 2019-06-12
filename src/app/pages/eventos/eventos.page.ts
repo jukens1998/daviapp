@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { LoadingController } from "@ionic/angular";
+
 declare var google;
 @Component({
   selector: 'app-eventos',
@@ -46,4 +47,9 @@ export class EventosPage implements OnInit {
       lng: rta.coords.longitude
     };
   }
+
+  //---------------------
+  images =['1.png','2.png','3.png','4.png'];
+
+  
 }

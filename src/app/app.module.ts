@@ -9,17 +9,23 @@ import { Geolocation } from "@ionic-native/geolocation/ngx";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {AngularFireModule} from 'angularfire2';
-import {environment} from '../environments/environment';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MenuComponent } from "./components/menu/menu.component";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+
 @NgModule({
-  declarations: [AppComponent,MenuComponent],
-  exports:[MenuComponent],
+  declarations: [AppComponent, MenuComponent],
+  exports: [MenuComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(environment.firebaseConfig),AngularFirestoreModule,AngularFireAuthModule
+    BrowserModule, IonicModule.forRoot(),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule
+
   ],
   providers: [
     StatusBar,
@@ -29,4 +35,4 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
