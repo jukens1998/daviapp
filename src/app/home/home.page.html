@@ -1,33 +1,41 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button color="primary" menu="primerMenu">
-
-      </ion-menu-button>
+      <ion-menu-button color="primary" menu="primerMenu"> </ion-menu-button>
     </ion-buttons>
     <ion-title>
       Ionic Crud-Todos
     </ion-title>
   </ion-toolbar>
 </ion-header>
- <ion-content>
+<ion-content>
   <ion-list>
+    <!--Contenido si no hay eventos-->
     <ng-container *ngIf="!todos || todos.length == 0">
-      <div *ngFor="let n of [0,1,2]" padding>
+      <div *ngFor="let n of [0, 1, 2, 4]" padding>
         <ion-skeleton-text></ion-skeleton-text>
         <p>
           <ion-skeleton-text class="text-skeleton"></ion-skeleton-text>
         </p>
       </div>
     </ng-container>
+    <!--Contenido si no hay eventos-->
+
+    <!--Eventos-->
     <ion-item-sliding *ngFor="let todo of todos">
       <ion-item lines="inset" button [routerLink]="['/details', todo.id]">
         <ion-label>
-          {{ todo.task }}
+            <img src="../../assets/icon/{{todo.host}}" slot="start" alt="" />
+        </ion-label>
+        <ion-label>
+          
+          <h1>{{ todo.task }}</h1>
+          <h2>{{ todo.evento }}</h2>
+          
         </ion-label>
         <ion-note slot="end" color="primary">{{ todo.priority }}</ion-note>
       </ion-item>
- 
+
       <ion-item-options side="end">
         <ion-item-option (click)="remove(item)" color="secondary">
           Check
@@ -36,9 +44,11 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/details" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
- </ion-content>
+
+  <!--Eventos-->
+</ion-content>

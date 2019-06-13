@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Taskt} from '../../models/task.interface';
 import { TodoService } from "../../services/todo.service";
 import {ActivatedRoute  } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
@@ -9,9 +8,13 @@ import { NavController, LoadingController } from "@ionic/angular";
   styleUrls: ['./todo-details.page.scss'],
 })
 export class TodoDetailsPage implements OnInit {
-  todo: Taskt ={
+  todo ={
     task:'',
-    priority:0
+    priority:0,
+    evento:'',
+    host:'',
+    lat:0,
+    lon:0
   };
   todoId=null;
   constructor(private route: ActivatedRoute, private nav:NavController, private TodoService:TodoService, private loadingController:LoadingController) {
@@ -59,4 +62,23 @@ export class TodoDetailsPage implements OnInit {
     this.TodoService.removeTodo(idTodo);
   }
 
+  eventos = [
+    {
+      imagen:'1.png'
+    },
+    {
+      imagen:'2.png'
+    },
+    {
+      imagen:'3.png'
+    },
+    {
+      imagen:'4.png'
+    }
+  ];
+
+  hostimage(hostimage){
+    
+    this.todo.host=hostimage;
+  }
 }
