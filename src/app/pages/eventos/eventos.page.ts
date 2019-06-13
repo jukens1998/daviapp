@@ -3,6 +3,13 @@ import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { LoadingController } from "@ionic/angular";
 
 declare var google;
+
+var icon = {
+  url: "https://freepngimg.com/download/map/66970-map-google-icons-house-maps-computer-marker.png", // url
+  scaledSize: new google.maps.Size(50, 50), // scaled size
+  origin: new google.maps.Point(0,0), // origin
+  anchor: new google.maps.Point(0, 0) // anchor
+};
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.page.html',
@@ -36,7 +43,8 @@ export class EventosPage implements OnInit {
     const marker = new google.maps.Marker({
       position: { lat, lng },
       map: this.mapRef,
-      title: 'Hello World!'
+      title: 'Hello World!',
+      icon: icon,
     });
   }
 
@@ -49,6 +57,11 @@ export class EventosPage implements OnInit {
   }
 
   //---------------------
+  evento1:{
+    iamge:'1.png',
+    lat:5.029017339689602,
+    long:-73.99196186928243
+  }
   images =['1.png','2.png','3.png','4.png'];
 
   
