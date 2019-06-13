@@ -9,8 +9,8 @@
     <ion-list>
       <ion-item href="/home" > <ion-icon slot="start" name="home"></ion-icon> Inicio </ion-item>
       <ion-item href="/eventos" > <ion-icon slot="start" name="map"></ion-icon> Eventos</ion-item>
-      <ion-item href="/login" >Menu Item</ion-item>
-      <ion-item href="/login" >Menu Item</ion-item>
+      <ion-item href="/login" *ngIf="authservice.user | async as uid"  >hola {{uid}} </ion-item>
+      <ion-item href="/login" >Menu Itemaaa</ion-item>
       <ion-item (click)="OnLogout()"> <ion-icon slot="start" name="power"></ion-icon> Cerrar sesion</ion-item>
     </ion-list>
   </ion-content>
