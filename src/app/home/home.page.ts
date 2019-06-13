@@ -1,6 +1,5 @@
     
 import { Component, OnInit } from '@angular/core';
-import { Taskt } from '../models/task.interface';
 import { TodoService } from '../services/todo.service';
 
 
@@ -10,7 +9,7 @@ import { TodoService } from '../services/todo.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-  todos: Taskt[];
+  todos=[];
 
   constructor(private todoService: TodoService){}
   
