@@ -32,6 +32,7 @@ var defecto = {
 })
 export class EventosPage implements OnInit {
   todos=[];
+  nickname='';
   mapRef = null;
   constructor(private geolocation: Geolocation, private loadingCtrl: LoadingController,private todoService: TodoService) { }
 

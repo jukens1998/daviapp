@@ -32,7 +32,9 @@
     "core-js": "^2.5.4",
     "firebase": "^5.7.0",
     "ionic-img-viewer": "^2.9.0",
-    "rxjs": "~6.5.1",
+    "ng-socket-io": "^0.2.4",
+    "rxjs": "^6.5.2",
+    "rxjs-compat": "^6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
   },
