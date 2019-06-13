@@ -16,6 +16,15 @@ export class TodoDetailsPage implements OnInit {
     lat:0,
     lon:0
   };
+
+  // evento = {
+  //   Nombre : '',
+  //   Lugar : '',
+  //   ID_usuario:'',
+  //   lat:0,
+  //   lon:0
+  // };
+
   todoId=null;
   constructor(private route: ActivatedRoute, private nav:NavController, private TodoService:TodoService, private loadingController:LoadingController) {
 
@@ -78,7 +87,7 @@ export class TodoDetailsPage implements OnInit {
   ];
 
   hostimage(hostimage){
-    
+
     this.todo.host=hostimage;
   }
 }
