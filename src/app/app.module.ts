@@ -16,6 +16,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MenuComponent } from "./components/menu/menu.component";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+
+
+// Http e importarlos
+import { HttpModule} from '@angular/http';
+import { HttpClientModule} from "@angular/common/http";
+
+
 const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 @NgModule({
   declarations: [AppComponent, MenuComponent],
@@ -28,7 +35,9 @@ const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    SocketIoModule.forRoot(config) 
+    SocketIoModule.forRoot(config),
+    HttpModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

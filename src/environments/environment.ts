@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: "daviapp-3c32e.appspot.com",
     messagingSenderId: "410411896422",
     appId: "1:410411896422:web:a9bcf5e4b9ba582a"
-  }
+  },
+  cloudFunctionsEndpoint: "https://us-central1-daviapp-3c32e.cloudfunctions.net/daviapp"
 };
 
 

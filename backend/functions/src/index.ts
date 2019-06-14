@@ -77,7 +77,7 @@ app.post('/notificaciones/user', async(req, res)=>{
 // Notificaciones para eventos nuevos
 app.post('notificaciones/eventos', async(req, res)=>{
     // TODO: NOTIFICAR A PERSONAS INTERESADAS SOLAMENTE O CERCANAS
-    let token = req.body.token;
+    // let token = req.body.token;
     try {
         let response  = await admin.messaging().send({
             notification:{
@@ -103,7 +103,7 @@ app.post('notificaciones/eventos', async(req, res)=>{
 
 /* Enlaza todas las rutas de app como cloud functions */
 /* lO QUE ME DE AL FINAL  */
-exports.notificacions = functions.https.onRequest(app);
+exports.daviapp = functions.https.onRequest(app);
 
 /* 
     Subir
