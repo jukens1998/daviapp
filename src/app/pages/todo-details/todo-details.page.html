@@ -10,7 +10,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-list lines="full">
+   <!--mapa-->
+    <div id="map1"></div>
+  <ion-item>
+    <ion-label  position="floating">Latitud</ion-label>
+    <ion-input id="lati" type="text" [(ngModel)]="todo.lat"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label  position="floating">Latitud</ion-label>
+      <ion-input id="long" type="text" [(ngModel)]="todo.long"></ion-input>
+    </ion-item>
+
+  <ion-list lines="full">  
+      
     <!--Tarea-->
     <ion-item *ngIf="todo">
         <ion-label position="floating"> Nombre del evento</ion-label>

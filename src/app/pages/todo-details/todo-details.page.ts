@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from "../../services/todo.service";
 import {ActivatedRoute  } from "@angular/router";
 import { NavController, LoadingController } from "@ionic/angular";
+import { Geolocation } from "@ionic-native/geolocation/ngx";
+declare var google;
+
+
 @Component({
   selector: 'app-todo-details',
   templateUrl: './todo-details.page.html',
   styleUrls: ['./todo-details.page.scss'],
 })
 export class TodoDetailsPage implements OnInit {
+  mapRef=null;
   todo ={
     task:'',
     priority:0,
@@ -17,7 +22,7 @@ export class TodoDetailsPage implements OnInit {
     lon:0
   };
   todoId=null;
-  constructor(private route: ActivatedRoute, private nav:NavController, private TodoService:TodoService, private loadingController:LoadingController) {
+  constructor(private geolocation:Geolocation, private loadingCtrl:LoadingController,private route: ActivatedRoute, private nav:NavController, private TodoService:TodoService, private loadingController:LoadingController) {
 
    }
 
@@ -26,6 +31,7 @@ export class TodoDetailsPage implements OnInit {
     if (this.todoId) {
       this.loadTodo();
     }
+    this.loadMap();
   }
  async loadTodo(){
     const loading = await this.loadingController.create({
@@ -56,6 +62,8 @@ export class TodoDetailsPage implements OnInit {
         this.nav.navigateForward('/');
       });
     }
+
+   
   }
 
   onRemove(idTodo:string){
@@ -81,4 +89,54 @@ export class TodoDetailsPage implements OnInit {
     
     this.todo.host=hostimage;
   }
+
+
+
+
+  // google maps
+
+  async loadMap() {
+    const loading = await this.loadingCtrl.create();
+    loading.present();
+    const myLatLng = await this.getLocation();
+    const mapEle: HTMLElement = document.getElementById('map1');    
+    this.mapRef = new google.maps.Map(mapEle, {
+      center: myLatLng,
+      zoom: 12
+    });
+    google.maps.event
+    .addListenerOnce(this.mapRef, 'idle', () => {
+      loading.dismiss();
+      this.addMaker(myLatLng.lat, myLatLng.lng);
+      
+    });
+    
+
+  }
+
+  public addMaker(lat: number, lng: number) {
+    const marker = new google.maps.Marker({
+      position: { lat, lng },
+      map: this.mapRef,
+      title: 'Hello World!',
+      draggable: true
+    });
+    google.maps.event.addListener(marker, 'dragend', function (evt) {
+      document.getElementById('lati').innerHTML=evt.latLng.lat().toFixed(6);
+      document.getElementById('long').innerHTML=evt.latLng.lng().toFixed(6);
+     
+
+  });
+  }
+  
+
+  private async getLocation() {
+    const rta = await this.geolocation.getCurrentPosition();
+    return {
+      lat: rta.coords.latitude,
+      lng: rta.coords.longitude
+    };
+  }
+
+ 
 }
