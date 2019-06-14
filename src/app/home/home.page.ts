@@ -41,7 +41,7 @@ export class HomePage implements OnInit{
     });
 
 
-    // Listener recepcion
+    // Listener recepcion solo recibe peticion
     Plugins.PushNotifications.addListener('pushNotificationReceived', async (notificacion: PushNotification)=>{
       // Injectar servicio de toast y meter dentro la info que viene en la notificacion que me regresa el listener
       console.log("NOTIFICACION LLEGA: "+ JSON.stringify(notificacion));
@@ -65,8 +65,6 @@ export class HomePage implements OnInit{
 
   }
 
-
-  
   // Metodo que se llama cuando se quiere registrar los permisos para que se capture el evento de registro
   requestPermissions(){
     // Promesa vacia
