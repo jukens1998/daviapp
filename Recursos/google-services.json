@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "410411896422",
+    "firebase_url": "https://daviapp-3c32e.firebaseio.com",
+    "project_id": "daviapp-3c32e",
+    "storage_bucket": "daviapp-3c32e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410411896422:android:2767b8da6f0cbb53",
+        "android_client_info": {
+          "package_name": "com.devlevel.co"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410411896422-06e994ai2nu69m0h1udsoi2m32tb57iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYAUl1xHBG7v-6tKzXHR5kEvg2l0Kr6Vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410411896422-06e994ai2nu69m0h1udsoi2m32tb57iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

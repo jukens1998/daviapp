@@ -1,0 +1,262 @@
+NVM: https://medium.com/appseed-io/how-to-run-multiple-versions-of-node-js-with-nvm-for-windows-ffbe5c7a2b47
+  $ nvm list
+  $ nvm use 10.16.0 64
+
+Migrar: https://capacitor.ionicframework.com/docs/cordova/migrating-from-cordova-to-capacitor/
+npm install --save-dev node-sass
+
+$  ionic build
+$  npm install --save @capacitor/cli @capacitor/core
+$  npx cap init daviapp com.devlevel.co    # Se añade luego a la app de android y sale del config.xml
+
+$ npm run build  # hacer el build para que se actualize el www
+
+
+$ npx cap add android  # Solo una vez
+$ npx cap copy  # Actualiza app con lo del build
+
+Copear el json a app de android
+
+$ capacitor run android  # Correr aplicacion en Android studio
+$ ionic cap run android
+
+
+
+
+
+
+
+
+
+
+Proyecto nuevo sin plantilla, en blanco
+$ ionic start PushNotifications blank
+
+
+Configurar capacitor con ionic
+
+Usar Ionic native-> Apache cordova
+
+Usar nuevo puente capacitor, se puede usar con cualquier capa web.
+
+$  ionic build-> compilar a www para que luego capacitor la use
+$  npm install --save @capacitor/cli @capacitor/core
+
+Integrar capacitor con la aplicacion
+Identificar el proyecto con id unico
+nombre aplicacion, identificador unico
+
+$  npx cap init PushNotificationsFacilito com.codigofacilito.ionicpush ejeuctar comandos de las dependencias
+Esto agrega archivos de confuguracion de capacitor
+
+CONFIGURAR PLATAFORMA NATIVA PARA CAPACITOR
+Agrega carpeta con proyecto completo de android a partir de capacitor
+$ npx cap add android
+$ npx cap open android
+
+
+FIREBASE
+Para almacenar los tokens para enviar notificaiones push con Firestore y cloudmessaging
+y cloud functions para ejecutar codigo del backend usando tokens guardados en la bd
+
+
+
+Crear aplicacion
+> Android, poner ap id el com.... que esta en capacitor.config.json
+> apodo
+
+
+Descargas archivos configuracion google-sevices.json y moverlos  android/app
+
+Lo demas se hace con capacitor luego
+
+Probar
+
+
+FLUJO DE TRABAJO CAPACITOR Y Ionic
+
+npx cap serve
+
+Si modifico algo para que capacitor actualize todo y volver a correr en Android studio, darle a rebuild project
+
+$ npm run build  # hacer el build para que se actualize el www
+$ npx cap copy  # Actauliza modificacion
+$ capacitor run android  # Correr aplicacion en Android studio
+
+
+LIVE RELOAD en vivo
+agrega opcion al capacitor.config.json y abre android studio y usa app server rapidin
+$ ionic cap run android -l
+$ ionic capacitor run android -l 
+
+SI HAY PROBLEMAS REBUILD Y INVALIDATE CACHE AND RESTART 
+SI NO SE REFLEJAN LOS CAMBIOS
+
+
+SOLICITAR PERMISOS
+
+Para enviar notificaiones a dispostivos se necesita un token especifico o identificador
+y tambien dice si se tienen permisos de enviar notificaciones
+
+
+  // Para obtener el token del dispostivo se debe de esperar a un evneto
+  requestPermissions(){
+    // Usa capacitor para obtener el permiso con el objeto retorna promesa vacia
+    Plugins.PushNotifications.register();
+  }
+
+Cuando se crea el componente se pide confirmacion
+
+  ngOnInit(){
+    Plugins.PushNotifications.addListener('registration', (token: PushNotificationToken)=>{
+      console.log("TOKEN: "+token);
+      this.token = token.value;
+    });
+
+Ver el logcat
+
+EL TOKEN SE DEBE DE GUARDAR SIEMPRE, PARA QUE TENGA PERMISOS SIEMPRE DE ENVIAR NOTIFICACIONES PUSH 
+
+
+ENVIAR PRIMER NOTIFICAION
+
+EN FIREBASE, CRECIMIENTO-MESSAGING
+
+Llenar formulario, se debe de cerrar el app
+
+Segmentacion son reglas agregar el app y filtros
+Se envia a todos si no cambio
+
+--------------------------------------
+
+No sirve el livereload 
+
+$ ionic start PushNotificationsApp blank
+$ cd PushNotificationsApp
+
+IONIC NATIVE O CAPACITOR
+
+Integrar capacitor
+$ npm install --save @capacitor/cli @capacitor/core
+
+$ npm run build  # Hace el build para que se actualize el www para que capacitor la use
+
+Con el nombre y el id que luego va a usar el servicio de Firebase
+$ npx cap init PushNotificationsFacilito com.codigofacilito.ionicpush
+$ npx cap add android  # Crear aplicacion android
+$ npx cap open android
+
+$ npx cap copy  # Actauliza modificacion
+$ capacitor run android  # Correr aplicacion en Android studio
+
+Descargar archivos servicios y añadirlos a la capeta app del proyecto android
+
+Flujo de trabajo  ideal
+---------------------------------------------------------------------
+Modificaciones
+$ npm run build
+$ npx cap copy
+$ npx cap open android
+---------------------------------------------------------------------
+
+Modificaciones en vivo
+$ ionic cap run android -l  # Agrega opcion de url para actualizar automaticamente
+Run debug app
+
+notificaciones
+
+Almacenar token
+
+Firebase
+
+Crear base de datos de Firestore
+
+Es un objeto grandote json
+
+Configurar AngularFire de la web por que no hay plugin de capacitor PERO SI DE CORDOVA
+
+$ npm install @angular/fire firebase --save
+
+En environment guardar claves
+
+Añadir aplicacion web en Firebase y crear app web y copiar credenciales
+
+Importar en los modulos de cada componente/page firestore de angular junto 
+con las variables de entorno donde esta todo lo de autenticacion al proyecto
+
+Guardar 
+    saveTokenInFirebase(){
+      // Donde guardar en el mismo documento/ identificador
+      // this.db.collection('tokens').add({token: this.token})
+      this.db.collection('tokens').doc(this.token).set({token: this.token})
+      .then(console.log).catch(console.log);
+  
+    }
+
+Consultar
+
+
+
+Configurar cloud functions
+
+Crear nueva carpeta
+$ npm i -g firebase-tools
+$ firebase login  # hackerteamhcd@gmail.com  Password: hackerteam@forever
+$ firebase logout
+
+Crear carpeta functions
+
+$ firebase init functions
+
+Seleccionar proyectos typescript yes para lints y yes para dependencias
+
+Añadir dependencias en package.json de express y cors
+
+  "dependencies": {
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.0.0",
+    "express": "4.17.1",
+    "cors": "2.8.5"
+  },
+
+
+Probar con POSTMAN
+
+URL
+https://us-central1-facilitoionicnotifications.cloudfunctions.net/notificacions
+Cuerpo -> json object y post
+
+
+Peticion desde IONIC
+
+Con modulo http importarlo en app-module.ts
+
+Generar servicios
+
+$ ionic g s services/Messenger
+
+
+Enviar 
+
+// Usando el servicio injectado envia notificacion al api para que esa envie el mensaje al celuco
+  sendNotification(token){
+    this.messageService.sendNotification(token).then(console.log).catch(console.log);
+  }
+
+Opciones: https://firebase.google.com/docs/cloud-messaging/concept-options
+
+Recibir
+
+    // Listener recepcion
+    Plugins.PushNotifications.addListener('pushNotificationReceived', async (notificacion: PushNotification)=>{
+      // Injectar servicio de toast y meter dentro la info que viene en la notificacion que me regresa el listener
+      console.log('Notificacion recibida '+ JSON.stringify("NOTIFICACION LLEGA: "+notificacion));
+      
+      const toast = await this.toasController.create({
+        message: `Notificacion recibida: ${notificacion.title}`,
+        duration: 2000
+      });
+
+      toast.present();
+    });
+
