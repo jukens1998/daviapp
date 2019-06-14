@@ -27,6 +27,9 @@ export class HomePage implements OnInit{
     ){}
   
   ngOnInit(){
+
+    this.requestPermissions();
+
     this.todoService.getTodos().subscribe((todos) =>{
       this.todos = todos;
     });
