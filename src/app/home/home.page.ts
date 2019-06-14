@@ -60,8 +60,10 @@ export class HomePage implements OnInit{
   saveTokenInFirebase(){
     // Donde guardar en el mismo documento/ identificador
     // this.db.collection('tokens').add({token: this.token})
-    this.db.collection('tokens').doc(this.token).set({token: this.token})
-    .then(console.log).catch(console.log);
+    this.messageService.saveToken(this.token);
+
+    /* this.db.collection('tokens').doc(this.token).set({token: this.token})
+    .then(console.log).catch(console.log); */
 
   }
 

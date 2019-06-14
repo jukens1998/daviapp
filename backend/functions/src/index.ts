@@ -3,7 +3,6 @@ import * as functions from 'firebase-functions';
 import * as express from 'express';
 import * as cors from 'cors';
 import * as admin from 'firebase-admin';
-import * as firebase from 'firebase';
 
 var config = {
     apiKey: "AIzaSyDrpb9bI3cseBJZAFhyNDgFDJ1ZMfqYSPo",
@@ -14,18 +13,17 @@ var config = {
     messagingSenderId: "410411896422",
     appId: "1:410411896422:web:a9bcf5e4b9ba582a"
 }
-firebase.initializeApp(config);
+/* firebase.initializeApp(config); */
 
+// Conectarse con firebase para acceder a lo que sea del proyecto
+admin.initializeApp(config);
+var db = admin.firestore();
 
 const app = express();
 
 // Middleware
 app.use(cors());
 
-
-
-// Conectarse con firebase para acceder a lo que sea del proyecto
-admin.initializeApp();
 
 /* PERSONAS */
 
@@ -75,7 +73,7 @@ app.post('/notificaciones/user', async(req, res)=>{
 });
 
 // Notificaciones para eventos nuevos
-app.post('notificaciones/eventos', async(req, res)=>{
+app.post('/notificaciones/eventos', async(req, res)=>{
     // TODO: NOTIFICAR A PERSONAS INTERESADAS SOLAMENTE O CERCANAS
     // let token = req.body.token;
     try {
@@ -94,6 +92,16 @@ app.post('notificaciones/eventos', async(req, res)=>{
         return res.json(response);
     } catch (error) {
         return res.json(error).status(500);/* Error en el servidor */
+    }
+});
+
+
+app.post("/new/token", async(req, resp)=>{
+    try {
+        db.collection('tokens').doc(req.body.token).set({token: req.body.token}).then().catch;
+        return resp.json(req.body.token);
+    } catch (error) {
+        return resp.json(error);
     }
 });
 

@@ -28,7 +28,6 @@ $ ionic cap run android
 
 
 
-
 Proyecto nuevo sin plantilla, en blanco
 $ ionic start PushNotifications blank
 

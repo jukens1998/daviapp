@@ -16,4 +16,8 @@ export class MessengerService {
    //  Observable no subscribe entonces a promise
    return this.http.post(environment.cloudFunctionsEndpoint, { token: token } ).toPromise();
   }
+
+  saveToken(token){
+    return this.http.post(`${environment.cloudFunctionsEndpoint}/new/token`, {token: token}).toPromise();
+  }
 }
